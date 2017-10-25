@@ -7,7 +7,6 @@ import subprocess
 from lxml import html
 
 url = sys.argv[1]
-ticket_ids = sys.argv[1:]
 
 while True:
     response = requests.get(url)
