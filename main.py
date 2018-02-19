@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import argparse
 import datetime
 import requests
 import subprocess
@@ -8,7 +9,11 @@ import subprocess
 from lxml import html
 from twilio.rest import Client
 
-url = sys.argv[1]
+parser = argparse.ArgumentParser(
+    description="Poll a given Resident Advisor URL and notify if resale tickets are available.",
+)
+parser.add_argument('url', help="Resident Advisor event page URL")
+args = parser.parse_args()
 
 TWILIO_SID = os.getenv('TWILIO_SID')
 TWILIO_TOKEN = os.getenv('TWILIO_TOKEN')
@@ -22,7 +27,7 @@ client = Client(TWILIO_SID, TWILIO_TOKEN)
 text_sent = False
 
 while True:
-    response = requests.get(url)
+    response = requests.get(args.url)
     root = html.document_fromstring(response.content)
 
     tickets_with_resale = root.xpath('//li[@id="tickets"]/ul/li[@data-resale-tickets-available > 0]')
