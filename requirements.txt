@@ -1,12 +1,2 @@
-certifi==2018.1.18
-chardet==3.0.4
-idna==2.6
-lxml==4.6.2
-PyJWT==1.5.3
-PySocks==1.6.8
-pytz==2018.3
-requests==2.20.0
-six==1.11.0
-twilio==6.10.3
-urllib3==1.25.2
-wheel==0.26.0
+clicksend-client @ git+https://github.com/ClickSend/clicksend-python.git@d8290b76ea1b0cf2aaf46cffe60b2cc3c219fbe1
+fake-useragent==1.1.1
